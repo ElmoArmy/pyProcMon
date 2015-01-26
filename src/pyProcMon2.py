@@ -11,6 +11,7 @@ import datetime
 initialDict = dict.fromkeys(psutil.process_iter())
 
 while True:
+
     # Grab an updated list
     secondDict = dict.fromkeys(psutil.process_iter())
 
@@ -24,7 +25,7 @@ while True:
         except:
             print "\n\n[-] Process terminated, but data no longer exists."
 
-    # Are there any process in the second list that don't appear in the first?
+    # Are there any processes in the second list that don't appear in the first?
     newProcesses = secondDict.viewkeys() - initialDict.viewkeys()
 
     # At this point, it is safe to designate the newer process list our standard for comparison.
@@ -37,7 +38,7 @@ while True:
 
         except:
             print "\n\n[+] Process created, but data no longer exists."
-            
+
         try:
             print "Command line: {}\nAbsolute path: {}\nCreation time: {}".format(
                 created.cmdline(),
